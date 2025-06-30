@@ -1,3 +1,4 @@
+
 // This script implements a simple task management system.
 // Tasks are stored as objects in an array, managed via user prompts and console logging.
 
@@ -26,14 +27,16 @@ status: "done",
 // Initialize the main tasks array 
 // This allows modification of 'tasks' without altering 'initialTasks'.
 let tasks = [...initialTasks];
+
 // Defines the maximum number of tasks allowed.
 // Set to 6 to accommodate 3 initial tasks + 3 new tasks, as per project brief.
 const taskLimit = 6;
 
 /**
 * Handles user interaction to add a new task.
-* Prompts for title, description, and status, and validates status input./
-* Implements the task limit check and alerts the user if exceeded. */
+* Prompts for title, description, and status, and validates status input.
+* Implements the task limit check and alerts the user if exceeded. 
+*/
 
 function addTask(){
   // Check if the task array has reached its predefined limit.
@@ -50,16 +53,14 @@ function addTask(){
   const newTaskDescription = prompt("Enter task description:");
   if (newTaskDescription === null) return;
 
-  let newTaskStatus = prompt("Enter task status (todo, doing, done):");
+  let newTaskStatus = prompt("Enter task status (todo, doing, done):").toLowerCase();
   if (newTaskStatus === null) return;
-  newTaskStatus = newTaskStatus.toLowerCase();
 
   // Input validation loop to ensure the task status is one of the allowed values.
   while (newTaskStatus !== "todo" && newTaskStatus !== "doing" && newTaskStatus !== "done") {
     alert("Invalid status. Please enter 'todo', 'doing', or 'done'.");
-    newTaskStatus = prompt("Enter task status (todo, doing, done):");
+    newTaskStatus = prompt("Enter task status (todo, doing, done):").toLowerCase();
     if (newTaskStatus === null) return; // Allow user to cancel re-prompt
-    newTaskStatus = newTaskStatus.toLowerCase();
   }
 
   // Generates a unique, incremental ID for the new task based on the last task's ID.
