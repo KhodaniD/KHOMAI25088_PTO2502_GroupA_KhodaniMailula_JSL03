@@ -95,9 +95,9 @@ console.log("Completed Tasks:", completedTasks);
 }
 
 // Executes when the web page has fully loaded.
-window.onload = function() {
-  logTasksToConsole(); // Logs the initial tasks to the console.
-};
+// window.onload = function() {
+//   logTasksToConsole(); // Logs the initial tasks to the console.
+// };
 
 // Automatically prompts the user to add tasks until the 'taskLimit' is met.
 // This ensures the initial task count aligns with the project requirements (3 new tasks).
