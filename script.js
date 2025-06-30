@@ -42,3 +42,12 @@ if (tasks.length >= taskLimit) {
 alert ("There are enough tasks on your board, please check them in the console."); return; // Exit the function if no more tasks can be added.
 }
 
+// Prompts for task details, handling 'Cancel' to prevent incomplete task creation.
+const newTaskTitle = prompt ("Enter task title:");
+if (newTaskTitle === null) return;
+
+const newTaskDescription = prompt ("Enter task description:");
+if (newTaskDescription === null) return;
+
+let newTaskStatus = prompt ("Enter task status (todo, doing, done):"). toLowerCase();
+if (newTaskStatus === null) return;
