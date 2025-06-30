@@ -69,3 +69,42 @@ status: newTaskStatus,
 
 tasks.push(newTask); // Adds the new task object to the array.
 }
+
+/**
+* Filters the main tasks array to return only tasks marked as "done".
+* This function is key for displaying completed tasks as per requirements.
+* @returns (Array<Object>} An array of task objects with status "done".
+*/
+
+function filterCompletedTasks() {
+  return tasks.filter(task => task.status === "done");
+}
+
+/**
+* Logs all tasks and then specifically completed tasks to the console.
+* This fulfills the project's emphasis on console logging for task review.
+*/
+function logTasksToConsole() {
+console.log("All Tasks:", tasks);
+const completedTasks = filterCompletedTasks(); // Utilize the filter function.
+console.log("Completed Tasks:", completedTasks);
+}
+
+// Executes when the web page has fully loaded.
+window.onload = function() {
+  logTasksToConsole(); // Logs the initial tasks to the console.
+};
+
+// Automatically prompts the user to add tasks until the 'taskLimit' is met.
+// This ensures the initial task count aligns with the project requirements (3 new tasks).
+if (tasks.length < taskLimit) {
+  const remainingTasks = taskLimit - tasks.length;
+  for (let i = 0; i < remainingTasks; i++) {
+    addTask();
+  }
+// Attempts to add one more task immediately after the limit is reached.
+// This specifically triggers the "task limit reached" alert for demonstration.
+addTask();
+// Logs all tasks (including newly added ones) to the console for review.
+logTasksToConsole();
+};
