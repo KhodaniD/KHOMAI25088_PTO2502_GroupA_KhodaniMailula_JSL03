@@ -51,3 +51,21 @@ if (newTaskDescription === null) return;
 
 let newTaskStatus = prompt ("Enter task status (todo, doing, done):"). toLowerCase();
 if (newTaskStatus === null) return;
+
+// Input validation loop to ensure the task status is one of the allowed values.
+while (newTaskStatus !== "todo" && newTaskStatus !== "doing" && newTaskStatus !== "done") {
+alert ("Invalid status. Please enter 'todo', 'doing', or 'done'.");
+newTaskStatus = prompt ("Enter task status (todo, doing, done):"). toLowerCase();
+if (newTaskStatus === null) return; // Allow user to cancel re-prompt
+
+// Generates a unique, incremental ID for the new task based on the last task's ID.
+const lastTaskId = tasks.length > 0 ? tasks[tasks.length - 1].id : 0;
+const newTask = {
+id: lastTaskId + 1,
+title: newTaskTitle,
+description: newTaskDescription,
+status: newTaskStatus,
+};
+
+tasks.push(newTask); // Adds the new task object to the array.
+}
