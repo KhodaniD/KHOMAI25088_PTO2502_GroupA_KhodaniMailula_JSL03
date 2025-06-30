@@ -22,3 +22,10 @@ description: "Gain practical experience and collaborate with others in the softw
 status: "done",
 },
 ];
+
+// Initialize the main tasks array 
+// This allows modification of 'tasks' without altering 'initialTasks'.
+let tasks = [...initialTasks];
+// Defines the maximum number of tasks allowed.
+// Set to 6 to accommodate 3 initial tasks + 3 new tasks, as per project brief.
+const taskLimit = 6;
