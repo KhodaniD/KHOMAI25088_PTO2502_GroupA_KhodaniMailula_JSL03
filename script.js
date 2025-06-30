@@ -35,39 +35,43 @@ const taskLimit = 6;
 * Prompts for title, description, and status, and validates status input./
 * Implements the task limit check and alerts the user if exceeded. */
 
-function addTask() {}
-// Check if the task array has reached its predefined limit.
-// This fulfills the requirement to alert the user when the limit is reached.
-if (tasks.length >= taskLimit) {
-alert ("There are enough tasks on your board, please check them in the console."); return; // Exit the function if no more tasks can be added.
-}
+function addTask(){
+  // Check if the task array has reached its predefined limit.
+  // This fulfills the requirement to alert the user when the limit is reached.
+  if (tasks.length >= taskLimit) {
+    alert("There are enough tasks on your board, please check them in the console.");
+    return; // Exit the function if no more tasks can be added.
+  }
 
-// Prompts for task details, handling 'Cancel' to prevent incomplete task creation.
-const newTaskTitle = prompt ("Enter task title:");
-if (newTaskTitle === null) return;
+  // Prompts for task details, handling 'Cancel' to prevent incomplete task creation.
+  const newTaskTitle = prompt("Enter task title:");
+  if (newTaskTitle === null) return;
 
-const newTaskDescription = prompt ("Enter task description:");
-if (newTaskDescription === null) return;
+  const newTaskDescription = prompt("Enter task description:");
+  if (newTaskDescription === null) return;
 
-let newTaskStatus = prompt ("Enter task status (todo, doing, done):"). toLowerCase();
-if (newTaskStatus === null) return;
+  let newTaskStatus = prompt("Enter task status (todo, doing, done):");
+  if (newTaskStatus === null) return;
+  newTaskStatus = newTaskStatus.toLowerCase();
 
-// Input validation loop to ensure the task status is one of the allowed values.
-while (newTaskStatus !== "todo" && newTaskStatus !== "doing" && newTaskStatus !== "done") {
-alert ("Invalid status. Please enter 'todo', 'doing', or 'done'.");
-newTaskStatus = prompt ("Enter task status (todo, doing, done):"). toLowerCase();
-if (newTaskStatus === null) return; // Allow user to cancel re-prompt
+  // Input validation loop to ensure the task status is one of the allowed values.
+  while (newTaskStatus !== "todo" && newTaskStatus !== "doing" && newTaskStatus !== "done") {
+    alert("Invalid status. Please enter 'todo', 'doing', or 'done'.");
+    newTaskStatus = prompt("Enter task status (todo, doing, done):");
+    if (newTaskStatus === null) return; // Allow user to cancel re-prompt
+    newTaskStatus = newTaskStatus.toLowerCase();
+  }
 
-// Generates a unique, incremental ID for the new task based on the last task's ID.
-const lastTaskId = tasks.length > 0 ? tasks[tasks.length - 1].id : 0;
-const newTask = {
-id: lastTaskId + 1,
-title: newTaskTitle,
-description: newTaskDescription,
-status: newTaskStatus,
-};
+  // Generates a unique, incremental ID for the new task based on the last task's ID.
+  const lastTaskId = tasks.length > 0 ? tasks[tasks.length - 1].id : 0;
+  const newTask = {
+    id: lastTaskId + 1,
+    title: newTaskTitle,
+    description: newTaskDescription,
+    status: newTaskStatus,
+  };
 
-tasks.push(newTask); // Adds the new task object to the array.
+  tasks.push(newTask); // Adds the new task object to the array.
 }
 
 /**
